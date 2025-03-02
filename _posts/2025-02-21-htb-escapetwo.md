@@ -202,8 +202,9 @@ This spawns a PowerShell session as `ryan`. We now have an interactive Evil-WinR
 
 At this point, we want to escalate to Domain Admin or a similarly privileged account. Standard enumerations using Bloodhound reveals `ryan` has `WriteOwner` to the `ca_svc` account, this is interesting AD CS (Certificate Services) privileges. Alternatively, you might find the domain running an Enterprise Certificate Authority with misconfigured templates—common in advanced AD exploitation.
 
-![[attachments/Pasted image 20250221125535.png]]
-![[attachments/Pasted image 20250221125558.png
+![](Pasted%20image%2020250221125535.png)
+
+![](Pasted%20image%2020250221125558.png)
 
 ### 6.1 Changing Ownership and DACL
 
