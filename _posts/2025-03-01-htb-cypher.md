@@ -51,14 +51,14 @@ Nmap done: 1 IP address (1 host up) scanned in 19.73 seconds
 
 - SSH (port 22) on an Ubuntu system.
 - HTTP (port 80) running nginx 1.24.0 on Ubuntu.
-- A redirect to [http://cypher.htb/](http://cypher.htb/). 
+- A redirect to `http://cypher.htb/`. 
 	- We update our /etc/hosts to include:
 	
 ```bash
 echo "10.10.11.57 cypher.htb" | sudo tee -a /etc/hosts
 ```
 
-With that in place, we can now browse to [http://cypher.htb](http://cypher.htb).
+With that in place, we can now browse to `http://cypher.htb`.
 	
 ## Web Enumeration
 
