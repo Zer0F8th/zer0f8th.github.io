@@ -5,7 +5,7 @@ image:
   path: preview.png
 layout: post
 media_subpath: /assets/posts/2025-02-17-htb-titanic
-categories: [HTB, HTB-Easy]
+categories: [Linux, HTB-Easy]
 tags: [Titanic, Directory Traversal, Gitea, Nmap, Hashcat, ImageMagick, CVE-2024-41817]
 description: "A comprehensive walkthrough of exploiting the Titanic HTB machine, from initial Nmap scanning and directory traversal to cracking Gitea hashes and leveraging a vulnerable ImageMagick (CVE-2024-41817) for root access."
 ---
